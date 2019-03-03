@@ -1,0 +1,43 @@
+.sb--wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.sb--input{
+    border-radius: 25px 0 0 25px;
+    outline: none;
+    border: 1px solid #b8b8b8;
+    padding: 5px 10px;
+    color: #585858;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.sb--btn{
+    border-radius:  0 25px 25px 0;
+    outline: none;
+    color: #585858;
+    background-color: #ffffff;
+    border: 1px solid #b8b8b8;
+    border-left: none;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.sb--btn:hover{
+    background: linear-gradient(to right, #e1c3f8, #c1d6ff);
+    cursor: pointer;
+}
+.sb--btn:active{
+    background: linear-gradient(to right, #d3b7e9, #a9bce0);
+    cursor: pointer;
+}
+.sb--rb-group{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+.sb--rb-group > label{
+    margin: 15px 10px;
+}

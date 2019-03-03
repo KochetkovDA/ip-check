@@ -1,0 +1,18 @@
+{
+    "extends": [
+      "airbnb",
+      "react-app",
+      "prettier"
+    ],
+    "rules": {
+      "import/extensions": "never",
+      "react/prefer-stateless-function": "off",
+      "jsx-quotes": [
+        1,
+        "prefer-double"
+      ]
+    },
+    "plugins": [
+      "prettier"
+    ]
+  }

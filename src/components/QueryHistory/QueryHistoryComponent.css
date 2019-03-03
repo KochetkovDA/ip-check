@@ -1,0 +1,16 @@
+.qh--wrapper{
+    margin: 15px;
+}
+
+
+.qh--table {
+    background: #ffffff;
+}
+
+.qh--table thead {
+    background: linear-gradient(to bottom, #e1c3f8, #c1d6ff);;
+  }
+
+.qh--table th {
+    padding: 10px;
+  }
