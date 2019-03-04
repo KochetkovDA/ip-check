@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import queryHistoryReducer  from './queryHistoryReducer'
+import queryHistoryReducer  from './queryHistory.reducer'
+import searchBarReducer from './serachBar.reducer'
 
 export default combineReducers({
-    queryHistoryReducer,
+    queryHistoryState: queryHistoryReducer,
+    searchBarState: searchBarReducer
 })

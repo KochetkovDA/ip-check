@@ -9,16 +9,19 @@ class QueryHistory extends Component {
 
   render() {
     return (
-      <div className="qh--wrapper"> 
+      <div className="qh--wrapper">
         <table className="qh--table">
           <thead>
-            <th> ip-adress </th>
-            <th> ip-adress </th>
-            <th> ip-adress </th>
-            <th> ip-adress </th>
-            <th> ip-adress </th>
-            <th> ip-adress </th>
+            <tr>
+              <th> ip-adress </th>
+              <th> ip-adress </th>
+              <th> ip-adress </th>
+              <th> ip-adress </th>
+              <th> ip-adress </th>
+              <th> ip-adress </th>
+            </tr>
           </thead>
+          <tbody />
         </table>
       </div>
     );

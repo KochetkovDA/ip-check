@@ -1,61 +1,80 @@
 import React, { Component } from 'react';
 import './SearchBarComponent.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { changeSearchQuery, sendSearchQuery } from '../../actions/searchBar.actions';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      inputValue: '',
-    };
-    this.updateState = this.updateState.bind(this);
-    this.showState = this.showState.bind(this);
+  updateIp(e) {
+    const { changeSearchQueryAction, query } = this.props;
+    changeSearchQueryAction({
+      Ip: e.target.value,
+      Api: query.Api,
+    });
   }
 
-  updateState(e) {
-    this.setState({ inputValue: e.target.value });
-  }
-
-  showState() {
-    console.log(this.state);
+  changeApi(e) {
+    const { changeSearchQueryAction, query } = this.props;
+    changeSearchQueryAction({
+      Ip: query.Ip,
+      Api: e.currentTarget.value,
+    });
   }
 
   render() {
-    const { inputValue } = this.state;
-
+    const { query, sendSearchQueryAction } = this.props;
     return (
       <div className="sb--wrapper">
         <div>
-          <input className="sb--input" value={inputValue} onChange={this.updateState} />
-          <button type="button" className="sb--btn" onClick={this.showState}>
+          <input className="sb--input" value={query.Ip} onChange={e => this.updateIp(e)} />
+          <button type="button" className="sb--btn" onClick={() => sendSearchQueryAction(query)}>
             Find this ip adress
           </button>
         </div>
-        <form>
-          <div className="sb--rb-group" radioGroup>
-            <label htmlFor="geoApi">
-              <input
-                type="radio"
-                value="option1"
-                id="geoApi"
-                onChange={this.handleOptionChange}
-                checked={this.state.selectedOption === 'option1'}
-              />
-              Geo Api
-            </label>
-            <label htmlFor="providerApi">
-              <input type="radio" value="option2" id="providerApi" />
-              Provider IP API
-            </label>
-            <label htmlFor="allApi">
-              <input type="radio" value="option3" id="allApi" />
-              All info about ip
-            </label>
-          </div>
+        <form className="sb--rb-group">
+          <label htmlFor="geoApi">
+            <input
+              type="radio"
+              value="geo"
+              id="geoApi"
+              onChange={e => this.changeApi(e)}
+              checked={query.Api === 'geo'}
+            />
+            Geo Api
+          </label>
+          <label htmlFor="providerApi">
+            <input
+              type="radio"
+              value="provider"
+              id="providerApi"
+              onChange={e => this.changeApi(e)}
+              checked={query.Api === 'provider'}
+            />
+            Provider IP API
+          </label>
         </form>
       </div>
     );
   }
 }
 
-export default SearchBar;
+const mapStateToProps = store => ({ query: store.searchBarState.query });
+
+const mapDispatchToProps = dispatch => ({
+  changeSearchQueryAction: query => dispatch(changeSearchQuery(query)),
+  sendSearchQueryAction: query => dispatch(sendSearchQuery(query)),
+});
+
+SearchBar.propTypes = {
+  query: PropTypes.shape({
+    Ip: PropTypes.string.isRequired,
+    Api: PropTypes.string.isRequired,
+  }).isRequired,
+  changeSearchQueryAction: PropTypes.func.isRequired,
+  sendSearchQueryAction: PropTypes.func.isRequired,
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBar);
