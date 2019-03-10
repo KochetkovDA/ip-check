@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
+import PropTypes            from 'prop-types';
+import { changeSearchQuery,
+         fetchIp }          from '../../actions/searchBar.actions';
 import './SearchBarComponent.css';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
-import { changeSearchQuery, sendSearchQuery } from '../../actions/searchBar.actions';
 
 class SearchBar extends Component {
   updateIp(e) {
@@ -23,12 +23,12 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { query, sendSearchQueryAction } = this.props;
+    const { query, fetchIpAction } = this.props;
     return (
       <div className="sb--wrapper">
         <div>
           <input className="sb--input" value={query.Ip} onChange={e => this.updateIp(e)} />
-          <button type="button" className="sb--btn" onClick={() => sendSearchQueryAction(query)}>
+          <button type="button" className="sb--btn" onClick={()=> fetchIpAction(query)}>
             Find this ip adress
           </button>
         </div>
@@ -63,7 +63,7 @@ const mapStateToProps = store => ({ query: store.searchBarState.query });
 
 const mapDispatchToProps = dispatch => ({
   changeSearchQueryAction: query => dispatch(changeSearchQuery(query)),
-  sendSearchQueryAction: query => dispatch(sendSearchQuery(query)),
+  fetchIpAction: query => dispatch(fetchIp(query))
 });
 
 SearchBar.propTypes = {
@@ -72,7 +72,7 @@ SearchBar.propTypes = {
     Api: PropTypes.string.isRequired,
   }).isRequired,
   changeSearchQueryAction: PropTypes.func.isRequired,
-  sendSearchQueryAction: PropTypes.func.isRequired,
+  fetchIpAction: PropTypes.func.isRequired,
 };
 export default connect(
   mapStateToProps,

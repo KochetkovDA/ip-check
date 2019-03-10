@@ -1,16 +1,26 @@
-.qh--wrapper{
+.qh--wrapper {
     margin: 15px;
 }
 
-
 .qh--table {
     background: #ffffff;
+    border-spacing: 0;
 }
 
 .qh--table thead {
-    background: linear-gradient(to bottom, #e1c3f8, #c1d6ff);;
-  }
+    background: linear-gradient(to bottom, #e1c3f8, #c1d6ff);
+    border: 1px solid #bebebe;
+}
 
 .qh--table th {
     padding: 10px;
-  }
+    border-bottom: 1px solid #bebebe;
+}
+
+.qh--table td {
+    padding: 3px;
+    border-bottom: 1px solid #ececec;
+}
+.qh--table tr:nth-child(2n) {
+    background: #eff4fd;
+}

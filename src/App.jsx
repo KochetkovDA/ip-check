@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
-import SearchBar from './components/Searchbar/SearchBarComponent';
-import QueryHistory from './components/QueryHistory/QueryHistoryComponents'
+import SearchBar            from './components/SearchBar/SearchBarComponent';
+import QueryHistory         from './components/QueryHistory/QueryHistoryComponents'
 import './App.css';
 
 
